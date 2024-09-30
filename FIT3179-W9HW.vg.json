@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Asthma Cases in Australia",
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/hmac0023/3179/refs/heads/main/output.json",
+    "format": {
+      "type": "topojson",
+      "feature": "STE_2021_AUST_GDA2020"
+    }
+  },
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME21",  
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/hmac0023/3179/refs/heads/main/asthma-data.csv" 
+        },
+        "key": "state",  
+        "fields": ["estimate"]
+      }
+    }
+  ],
+  "projection": {"type": "mercator"}, 
+  "mark": {
+    "type": "geoshape",
+    "stroke": "white"
+  },
+  "encoding": {
+    "color": {
+      "field": "estimate",
+      "type": "quantitative",
+      "scale": {"scheme": "blues"},
+      "title": "Asthma Cases"
+    },
+    "tooltip": [
+      {"field": "properties.STE_NAME21", "type": "nominal", "title": "State"}, 
+      {"field": "estimate", "type": "quantitative", "title": "Asthma Cases"}
+    ]
+  }
+}
