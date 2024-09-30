@@ -1,5 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "High Blood Pressure Cases in Australia",
     "description": "High Blood Pressure Estimates by State from CSV file",
     "data": {
       "url": "https://raw.githubusercontent.com/hmac0023/FIT3719-W10/main/highbloodpressure_stats.csv",
